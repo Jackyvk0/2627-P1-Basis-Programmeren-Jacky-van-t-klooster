@@ -1,7 +1,146 @@
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800, 600);
 }
 
 function draw() {
   background(220);
+  //1. Naam
+  fill(0);
+  text("Jacky van't klooster", 30,30);
+  //2. Vlag Nederland
+  strokeWeight(0);
+fill(255,0,0);
+  rect(30,50,120,50);
+  fill(255);
+  rect(30,100,120,50);
+  fill(0,0,255);
+  rect(30,150,120,50);
+  //3 schaak bord
+  strokeWeight(3);
+  fill(255);
+square(30,250,120);
+fill(0);
+square(30,250,40);
+fill(255);
+square(70,250,40);
+fill(0);
+square(110,250,40);
+fill(255);
+square(30,290,40);
+fill(0);
+square(70,290,40);
+fill(255);
+square(110,290,40);
+fill(0);
+square(30,330,40);
+fill(255);
+square(70,330,40);
+fill(0);
+square(110,330,40);
+//4.huisje
+fill(220);
+square(50,460,100);
+triangle(50,460,150,460,100,400);
+rect(90,500,30,60);
+//5. stoplicht
+fill(90);
+rect(200,50,50,150);
+fill(255,0,0);
+circle(225,75,30);
+fill(255,255,0);
+circle(225,125,30);
+fill(0,255,0);
+circle(225,175,30);
+fill(90);
+rect(215,200,15,50);
+//6. domino 6 
+fill(255);
+rect(200,300,100,150, 10);
+fill(0);
+circle(225,325,20);
+circle(275,325,20);
+circle(225,375,20);
+circle(275,375,20);
+circle(225,425,20);
+circle(275,425,20);
+//7. Mario NES
+strokeWeight(0);
+fill(152,64,57);
+square(400,550,20);
+square(420,550,20);
+square(440,550,20);
+square(460,550,20);
+square(420,530,20);
+square(440,530,20);
+square(460,530,20);
+fill(152,64,57);
+square(560,550,20);
+square(580,550,20);
+square(600,550,20);
+square(620,550,20);
+square(560,530,20);
+square(580,530,20);
+square(600,530,20);
+fill(0,0,255);
+square(440,510,20);
+square(460,510,20);
+square(480,510,20);
+square(540,510,20);
+square(560,510,20);
+square(580,510,20);
+square(440,490,20);
+square(460,490,20);
+square(480,490,20);
+square(500,490,20);
+square(520,490,20);
+square(540,490,20);
+square(560,490,20);
+square(580,490,20);
+square(440,470,20);
+square(460,470,20);
+square(480,470,20);
+square(460,450,20);
+square(480,450,20);
+fill(255,255,0);
+square(480,450,20);
+fill(0,0,255);
+square(500,470,20);
+square(520,470,20);
+square(500,450,20);
+square(520,450,20);
+square(540,470,20);
+fill(255,255,0);
+square(540,450,20);
+fill(0,0,255);
+square(560,470,20);
+square(580,470,20);
+square(560,450,20);
+square(480,430,20);
+square(500,430,20);
+square(520,430,20);
+square(540,430,20);
+square(480,410,20);
+square(480,390,20);
+square(540,410,20);
+fill(255,200,159)
+square(440,470,20);
+square(420,470,20);
+square(400,470,20);
+square(420,490,20);
+square(400,490,20);
+square(420,450,20);
+square(400,450,20);
+square(580,470,20);
+square(600,470,20);
+square(620,470,20);
+square(600,450,20);
+square(620,450,20);
+square(600,490,20);
+square(620,490,20);
+fill(255,1,0);
+square(440,450,20)
+square(440,430,20);
+square(440,410,20);
+square(440,390,20);
+
 }
