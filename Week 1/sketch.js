@@ -4,10 +4,14 @@ function setup() {
 
 function draw() {
   background(220);
+  
   //1. Naam
+
   fill(0);
   text("Jacky van't klooster", 30,30);
+ 
   //2. Vlag Nederland
+
   strokeWeight(0);
 fill(255,0,0);
   rect(30,50,140,50);
@@ -15,7 +19,9 @@ fill(255,0,0);
   rect(30,100,140,50);
   fill(0,0,255);
   rect(30,150,140,50);
-  //3 schaak bord
+  
+  //3 Schaakbord
+
   strokeWeight(3);
   fill(255);
 square(30,250,120);
@@ -37,12 +43,16 @@ fill(255);
 square(70,330,40);
 fill(0);
 square(110,330,40);
-//4.huisje
+
+//4. Huisje
+
 fill(220);
 square(50,460,100);
 triangle(50,460,150,460,100,400);
 rect(90,500,30,60);
-//5. stoplicht
+
+//5. Stoplicht
+
 fill(90);
 rect(200,50,50,150);
 fill(255,0,0);
@@ -53,9 +63,12 @@ fill(0,255,0);
 circle(225,175,30);
 fill(90);
 rect(217,200,15,50);
-//6. domino 6 
+
+//6. Domino 6
+
+strokeWeight(5);
 fill(255);
-rect(200,300,100,150, 10);
+rect(200,300,100,150, 15);
 fill(0);
 circle(225,325,20);
 circle(275,325,20);
@@ -63,7 +76,9 @@ circle(225,375,20);
 circle(275,375,20);
 circle(225,425,20);
 circle(275,425,20);
+
 //7. Mario NES
+
 strokeWeight(0);
 fill(152,64,57);
 square(400,550,20);
@@ -243,7 +258,9 @@ square(500,250,20);
 square(520,250,20);
 square(540,250,20);
 square(560,250,20);
+
 //8. Link (The Minish Cap)
+
 fill(0);
 square(750,550,10);
 square(760,560,10);
