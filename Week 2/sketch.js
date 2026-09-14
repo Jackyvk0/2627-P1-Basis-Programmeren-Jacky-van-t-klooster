@@ -11,7 +11,7 @@ function draw() {
   strokeWeight(5);
   line(60,40,); 
 
-  stroke('whte');
+  stroke('white');
   strokeWeight(7)
   line(5,550,70,550);
   line(260,550,320,550);
