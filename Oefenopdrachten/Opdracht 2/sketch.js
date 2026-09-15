@@ -22,11 +22,11 @@ function setup() {
 function draw() {
   background(220);
   //Teken de achtergrond grijze tint 220
-  text('100',20,20);
+  text(x,20,20);
   //text '100' = dus op x 20 en op y 20.
   let y = 60;
   ///dus laat y 60 zijn
-  text('Hello World!',20,y);
+  text(greeting,20,y);
   y += 20;
     // Text= 'Hello World!'. X = 20, Y = y += 20; = 60
   text("Optellen: " + (a + b),20,y);
