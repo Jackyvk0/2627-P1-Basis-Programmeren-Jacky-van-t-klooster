@@ -1,18 +1,20 @@
 let x = -100;
 
-let wL = 820;
-let w = 850;
-let wR = 880;
+let wL = 840;
+let w = 870;
+let wR = 900;
 
 let eL = 820
 let e = 850
 let eR = 880
 
-let qL = 810
-let q = 850
-let qR = 890
+let qL = 850
+let q = 880
+let qR = 910
 
-let z = 0
+let zz = 0
+
+let auto = -100
 
 function setup() {
   createCanvas(800, 600);
@@ -24,6 +26,8 @@ function draw() {
   //De Weg
   fill(150);
   rect(-10,500,900,605);
+  fill(100)
+  rect(-10,510,900,80);
   stroke('grey');
   strokeWeight(1);
   line(60,40,); 
@@ -43,13 +47,12 @@ function draw() {
   
   //Zon
  strokeWeight(0);
- fill(225,176,0, z);
- z += 1;
+ fill(225,176,0, zz);
+ zz += 1;
  circle (x, 80, 120)
- if (z = 255) {
-   z -= 4;
+ if (zz >= 255) {
+   zz -= -4;
   }
-  
   
   x += 1;
   fill(225,225,0);
@@ -74,9 +77,9 @@ circle (w, 80, 65,);
 circle (wR, 90, 50);
 
 if (wL < width-900) {
-  wL = 820;
-  w = 850;
-  wR = 880;
+  wL = 840;
+  w = 870;
+  wR = 900;
 }
 
 //Wolken langzaam
@@ -94,9 +97,9 @@ circle (q, 135, 85,);
 circle (qR, 140, 70);
 
 if (qR < width-900) {
-  qL = 820;
-  q = 850;
-  qR = 880;
+  qL = 850;
+  q = 880;
+  qR = 910;
 
 }
 
@@ -121,20 +124,34 @@ if (eR < width-900) {
 }
 
  //Bergen
-strokeWeight(10);
-stroke(0)
-point(436,480);
-strokeWeight(1);
+strokeWeight(0);
 
 fill(125);
 triangle(150, 485, 308, 270, 436, 485);
-  
- fill(85)
+fill(145);
+triangle(200, 485, 308, 270, 436, 485);
+fill(245);
+triangle(282, 305, 308, 270, 329, 305);
+fill(255);
+triangle(290, 305, 308, 270, 330, 305);
+
+ fill(85);
  triangle(306, 485, 480, 180, 680, 485);
+ fill(105);
+ triangle(386, 485, 480, 180, 680, 485);
+ fill(245);
+ triangle(454, 225, 480, 180, 510, 225);
+ fill(255);
+ triangle(464, 225, 480, 180, 510, 225);
 
  fill(125);  
- triangle(550, 485, 680, 90, 850, 485);
-
+ triangle(550, 485, 680, 90, 890, 485);
+ fill(155);
+ triangle(610, 485, 680, 90, 890, 485);
+ fill(245);
+ triangle(649, 185, 680, 90, 708, 195); 
+ fill(255);
+ triangle(662, 186, 680, 90, 768, 255); 
 
 //Bomen
 
@@ -168,14 +185,14 @@ circle(543,360,90);
 
 //Stoplicht
 fill(90);
-rect(650,250,50,150);
-fill(255,0,0);
-circle(675,275,35);
+rect(650,280,50,150);
+fill(252,0,0);
+circle(675,305,35);
 fill(95,95,0);
-circle(675,325,35);
+circle(675,355,35);
 fill(0,95,0);
-circle(675,375,35);
-fill(90,);
+circle(675,405,35);
+fill(90);
 rect(667,430,15,70);
 
 // if (keyIsPressed === true) {
@@ -186,7 +203,30 @@ rect(667,430,15,70);
 // }
 
 // fill(255,0,0);
-// circle(675,275,35);
+// circle(675,305,35);
+
+
+
+
+
+
+//Auto
+fill(255,0,0);
+rect(578,512,120,50);
+rect(590,482,90,40);
+fill(112);
+circle(675,567,35);
+circle(600,567,35);
+fill(255,0,0);
+
+ auto += 1;
+  fill(225,225,0);
+circle (auto, 80, 90,);
+
+if (auto > width+50) {
+  auto = -100;
+}
+
 
 
 }

@@ -1,4 +1,4 @@
-let score = 89;
+let score = 70;
 
 function setup() {
   createCanvas(400, 200);

@@ -1,7 +1,87 @@
+let x = 0
+
+let stoplichtkleur = 1
+
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(800, 800);
 }
 
 function draw() {
   background(220);
+  fill(0);
+  textSize(15);
+  text('1. Houd B in om een blokje te laten verschijnen',20, 20);
+  if (keyIsDown ('66') === true) {
+    fill(255);
+    square(30,30,60);
+  }
+
+fill(0);
+textSize(15);
+  text('2. Druk op spatie om het getal op 0 te zetten', 20, 120);
+  textSize(30);
+  text(x, 30, 160)
+  x += 1;
+  if (x >= 500) {
+    x = 0
+  }
+  else if (keyIsDown ('32') === true) {
+    x = 0 
+  } 
+
+  textSize(15);
+  text('3. Druk op enter om van rood -> groen -> oranje te gaan', 20, 240);
+  
+  fill(90);
+  rect(50,280,50,150);
+
+function keyPressed(){
+ if (keyIsPressed == true) {
+  if (keyCode == 13) {
+      stoplichtkleur = 1
+  }
+ }
+ else if (stoplichtkleur = 2);
+ stoplichtkleur = 1
+}
+
+  //red
+  if(stoplichtkleur == 0)
+  {
+    fill(252,0,0);  
+  }
+  else
+  {
+    fill(52,0,0);  
+  }
+  circle(75,305,35);
+  
+  //yellow
+  if (stoplichtkleur == 2) {
+    fill(255,255,0);
+  }
+  else
+  { 
+    fill(95,95,0);
+  }
+  circle(75,355,35);
+  
+  //green
+  if (stoplichtkleur == 1) {
+    fill(0,255,0);
+  }
+  else
+  {
+    fill(0,95,0);
+  }
+
+  circle(75,405,35);
+  
+  fill(90);
+  rect(67,430,15,70);
+
+
+
+  text('4. Beweeg de eightball met WASD of de pijltjestoetsen', 360, 20);
+ 
 }
