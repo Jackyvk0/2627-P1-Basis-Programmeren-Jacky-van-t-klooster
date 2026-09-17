@@ -35,10 +35,16 @@ textSize(15);
   fill(90);
   rect(50,280,50,150);
 
-//  else if (stoplichtkleur = 1) {
-//   stoplichtkleur = 2
-//  }
 
+function keyPressed() {
+  if (key === 'Enter') {
+    if (stoplichtkleur === 0) {
+      stoplichtkleur = 2;
+    } else {
+      stoplichtkleur--;
+    }
+  }
+}
 
   //red
   if(stoplichtkleur == 0)
@@ -78,11 +84,23 @@ textSize(15);
 
 
   text('4. Beweeg de eightball met WASD of de pijltjestoetsen', 360, 20);
- 
+ fill(0);
+circle(600,300,150);
+fill(255);
+circle(600,300,105);
+fill(0);
+textSize(35);
+text('8',590,310);
+
+
+
+
+
+
+
 }
 
 function keyPressed() {
-  console.log("gay");
   if (key === 'Enter') {
     if (stoplichtkleur === 0) {
       stoplichtkleur = 2;
@@ -91,3 +109,4 @@ function keyPressed() {
     }
   }
 }
+

@@ -1,6 +1,8 @@
 let zon = -100;
 let zonOranje = 0;
 
+let UFO = -5000;
+
 let wolkNormaalLinks = 840;
 let wolkNormaalMidden = 870;
 let wolkNormaalRechts = 900;
@@ -16,8 +18,8 @@ let wolkLangzaamRechts = 910;
 let autoRood = -100;
 let autoBlauw = -400;
 let autoVrachtwagen = -900;
-let autoSport = 900
-
+let autoSport = 900;
+let autoPolitie = 1090;
 let stoplichtkleur = 2;
      function keyPressed() {
           if (key === 'Enter') {
@@ -79,6 +81,19 @@ circle (zon, 80, 70,);
 
 if (zon > width+50) {
   zon = -100;
+}
+
+
+
+//UFO
+ UFO += 7;
+  fill('lightgreen');
+rect (UFO + 15, 190, 50, 50, 10,);
+ fill(112);
+ rect (UFO, 230, 80, 20, 3);
+if (UFO > width+50) {
+  UFO = -6000;
+
 }
 
 
@@ -287,6 +302,35 @@ if (stoplichtkleur === 0) {
 }
 else if (stoplichtkleur === 1) {
   autoSport -= -2;
+}
+
+
+//Auto Politie
+
+autoPolitie -= 3.6;
+fill('white');
+rect(autoPolitie - 10,480,105,50)
+rect(autoPolitie - 25,500,30,30)
+fill(50,54,254);
+stroke(252,186,3);
+textSize(10);
+// text('Politie',autoPolitie +30,500,105,40);
+strokeWeight(0);
+rect(autoPolitie, 470, 40, 10,20)
+fill('red');
+rect(autoPolitie + 50, 470, 40, 10, 20)
+fill(82);
+circle(autoPolitie, 527, 35,);
+circle(autoPolitie + 80, 527,35);
+if (autoPolitie < width-900) {
+  autoPolitie = 900;
+}
+
+if (stoplichtkleur === 0) {
+  autoPolitie -= -3.6;
+}
+else if (stoplichtkleur === 1) {
+  autoPolitie -= -2;
 }
 
 
