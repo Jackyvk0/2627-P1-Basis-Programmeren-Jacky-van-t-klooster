@@ -1,6 +1,6 @@
 let x = 0
 
-let stoplichtkleur = 1
+let stoplichtkleur = 0
 
 function setup() {
   createCanvas(800, 800);
@@ -30,20 +30,15 @@ textSize(15);
   } 
 
   textSize(15);
-  text('3. Druk op enter om van rood -> groen -> oranje te gaan', 20, 240);
+  text('3. Druk op enter om van rood -> groen -> geel te gaan', 20, 240);
   
   fill(90);
   rect(50,280,50,150);
 
-function keyPressed(){
- if (keyIsPressed == true) {
-  if (keyCode == 13) {
-      stoplichtkleur = 1
-  }
- }
- else if (stoplichtkleur = 2);
- stoplichtkleur = 1
-}
+//  else if (stoplichtkleur = 1) {
+//   stoplichtkleur = 2
+//  }
+
 
   //red
   if(stoplichtkleur == 0)
@@ -57,22 +52,22 @@ function keyPressed(){
   circle(75,305,35);
   
   //yellow
-  if (stoplichtkleur == 2) {
+  if (stoplichtkleur == 1) {
     fill(255,255,0);
   }
   else
   { 
-    fill(95,95,0);
+    fill(55,55,0);
   }
   circle(75,355,35);
   
   //green
-  if (stoplichtkleur == 1) {
+  if (stoplichtkleur == 2) {
     fill(0,255,0);
   }
   else
   {
-    fill(0,95,0);
+    fill(0,55,0);
   }
 
   circle(75,405,35);
@@ -84,4 +79,15 @@ function keyPressed(){
 
   text('4. Beweeg de eightball met WASD of de pijltjestoetsen', 360, 20);
  
+}
+
+function keyPressed() {
+  console.log("gay");
+  if (key === 'Enter') {
+    if (stoplichtkleur === 0) {
+      stoplichtkleur = 2;
+    } else {
+      stoplichtkleur--;
+    }
+  }
 }
