@@ -1,33 +1,41 @@
-// let score = 81;
 
 function setup() {
-  createCanvas(400, 200);
+  createCanvas(650, 650);
 }
 
 function draw() {
   background(220);
-  
-  let s = 'En the resultaten zijn.....';
+ 
+  //rode en blauwe gedeeltes
+  fill('red');
+rect(0,0,330, 1000);
+fill('blue');
+rect(320,0,330, 1000);
+ 
 
-text(s, 150, 100);
-let s = 'The quick brown fox jumps over the lazy dog.';
-  text(s, 10, 10, 70, 80);
-  
-// if (score > 90) {
-//   console.log("Uitstekend!");
-// }
+ //rand boter, kaas en eieren
+fill('black');
+  square (160,160, 330, 20);
 
-// else if (score > 70 && score <= 89) {
-//   console.log("Goed gedaan!");
-// }
+  //3x3 knoppen
+  fill(160);
 
-// else if (score > 50 && score <= 69) {
-//   console.log("Voldoende!");
-// }
+  //bovenste rij
+  square (180,180,90, 10);
+  square (280,180,90, 10);
+  square (380,180,90, 10);
 
-// else if (score < 49) {
-//   console.log("Onvoldoende!");
-// }
+ //middelste rij
+  square (180,280,90, 10);
+  square (280,280,90, 10);
+  square (380,280,90, 10);
+
+  //onderste rij
+  square (180,380,90, 10);
+  square (280,380,90, 10);
+  square (380,380,90, 10);
+
+
 
 
 }
