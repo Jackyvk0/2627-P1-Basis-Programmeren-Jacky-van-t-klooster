@@ -1,9 +1,20 @@
-//SpelersKleur
-let playerRood = 1;
-let playerBlauw = 2;
-let round = 1;
+// //SpelersKleur
+// let playerRood = 1;
+// let playerBlauw = 2;
+// let round = 1;
 
-//Bovenste rij
+//Bovenste rij kleur
+let colorSquareTopLeft = 'darkgrey'
+let hovercolorSquareTopLeft = 'grey'
+
+let colorSquareTopMid = 'darkgrey'
+let hovercolorSquareTopMid = 'grey'
+
+let colorSquareTopRight = 'darkgrey'
+let hovercolorSquareTopRight = 'grey'
+
+
+//Bovenste rij positie
 let squareTopLeftX = 180;
 let squareTopLeftY = 180;
 let squareTopLeftS = 90;
@@ -14,43 +25,73 @@ let squareTopMidX = 280;
 let squareTopMidY = 180;
 let squareTopMidS = 90;
 let squareTopMidR = 10;
+let squareTopMidC = 0;
 
 let squareTopRightX = 380;
 let squareTopRightY = 180;
 let squareTopRightS = 90;
 let squareTopRightR = 10;
+let squareTopRightC = 0;
 
-//Middelste rij
+//Middelste rij kleur
+
+let colorSquareMidLeft = 'darkgrey'
+let hovercolorSquareMidLeft = 'grey'
+
+let colorSquareMidMid = 'darkgrey'
+let hovercolorSquareMidMid = 'grey'
+
+let colorSquareMidRight = 'darkgrey'
+let hovercolorSquareMidRight = 'grey'
+
+//Middelste rij positie
 let squareMidLeftX = 180;
 let squareMidLeftY = 280;
 let squareMidLeftS = 90;
 let squareMidLeftR = 10;
+let squareMidLeftC = 0;
 
 let squareMidMidX = 280;
 let squareMidMidY = 280;
 let squareMidMidS = 90;
 let squareMidMidR = 10;
+let squareMidMidC = 0;
 
 let squareMidRightX = 380;
 let squareMidRightY = 280;
 let squareMidRightS = 90;
 let squareMidRightR = 10;
+let squareMidRightC = 0;
 
-//Onderste rij
+//Onderste rij kleur
+
+let colorSquareBottomLeft = 'darkgrey'
+let hovercolorSquareBottomLeft = 'grey'
+
+let colorSquareBottomMid = 'darkgrey'
+let hovercolorSquareBottomMid = 'grey'
+
+let colorSquareBottomRight = 'darkgrey'
+let hovercolorSquareBottomRight = 'grey'
+
+//Onderste rij positie
 let squareBottomLeftX = 180;
 let squareBottomLeftY = 380;
 let squareBottomLeftS = 90;
 let squareBottomLeftR = 10;
+let squareBottomLeftC = 0;
 
 let squareBottomMidX = 280;
 let squareBottomMidY = 380;
 let squareBottomMidS = 90;
 let squareBottomMidR = 10;
+let squareBottomMidC = 0;
 
 let squareBottomRightX = 380;
 let squareBottomRightY = 380;
 let squareBottomRightS = 90;
 let squareBottomRightR = 10;
+let squareBottomRightC = 0;
 
 
 function setup() {
@@ -77,16 +118,12 @@ rect(130,50,400,80,100,);
   textStyle(BOLDITALIC);
    text("Boter, Kaas en Eieren", 170, 100,);
 
-// //Start Knop + tekst
-// fill(0,0,0, 100);
-//  rect(210,530,200,80,40,);
-// fill(255);
-// textStyle(BOLD);
-// text ('Start', 280, 580);
-// if (mouseIsPressed === true &&  mouseX > 210 && mouseX < 210 + 200 - 10 && 
-//     mouseY > 530 && mouseY < 530 + 80 - 20) {
-  
-// }
+ //start text
+// fill(50,50,50,100);
+// rect(210,520,200,80,100,);
+//  fill(255);
+//   textStyle(BOLD);
+//    text("Start", 280, 570,);
 
 
 //rand boter, kaas en eieren
@@ -98,26 +135,17 @@ fill('black');
   //3x3 knoppen hover
   //Top Left
 
-  
   if (
     mouseX > squareTopLeftX && mouseX < squareTopLeftX + squareTopLeftS && 
     mouseY > squareTopLeftY && mouseY < squareTopLeftY + squareTopLeftS
-  ) { if (
-    squareTopLeftC === 0
   ) {
-    fill(100);
-    square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
-  } else if (squareTopLeftC == 1) {
-    fill (255, 0, 0);
-    square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
-  } else if (squareTopLeftC == 2) {
-    fill (0, 0, 255);
+    fill(hovercolorSquareTopLeft);
     square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
   } else {
-    fill (160);
+    fill (colorSquareTopLeft);
     square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
   }
-  }
+
 
 
   //Top Middle
@@ -125,10 +153,10 @@ fill('black');
     mouseX > squareTopMidX && mouseX < squareTopMidX + squareTopMidS && 
     mouseY > squareTopMidY && mouseY < squareTopMidY + squareTopMidS
   ) {
-    fill(100);
+    fill(hovercolorSquareTopMid);
     square (squareTopMidX,squareTopMidY,squareTopMidS,squareTopMidR);
   } else {
-    fill (160);
+    fill (colorSquareTopMid);
     square (squareTopMidX,squareTopMidY,squareTopMidS,squareTopMidR);
   }
 
@@ -138,10 +166,10 @@ fill('black');
     mouseX > squareTopRightX && mouseX < squareTopRightX + squareTopRightS && 
     mouseY > squareTopRightY && mouseY < squareTopRightY + squareTopRightS
   ) {
-    fill(100);
+    fill(hovercolorSquareTopRight);
     square (squareTopRightX,squareTopRightY,squareTopRightS,squareTopRightR);
   } else {
-    fill (160);
+    fill (colorSquareTopRight);
     square (squareTopRightX,squareTopRightY,squareTopRightS,squareTopRightR);
   }
 
@@ -152,10 +180,10 @@ fill('black');
     mouseX > squareMidLeftX && mouseX < squareMidLeftX + squareMidLeftS && 
     mouseY > squareMidLeftY && mouseY < squareMidLeftY + squareMidLeftS
   ) {
-    fill(100);
+    fill(hovercolorSquareMidLeft);
     square (squareMidLeftX,squareMidLeftY,squareMidLeftS,squareMidLeftR);
   } else {
-    fill (160);
+    fill (colorSquareMidLeft);
     square (squareMidLeftX,squareMidLeftY,squareMidLeftS,squareMidLeftR);
   }
   
@@ -166,10 +194,10 @@ fill('black');
     mouseX > squareMidMidX && mouseX < squareMidMidX + squareMidMidS && 
     mouseY > squareMidMidY && mouseY < squareMidMidY + squareMidMidS
   ) {
-    fill(100);
+    fill(hovercolorSquareMidMid);
     square (squareMidMidX,squareMidMidY,squareMidMidS,squareMidMidR);
   } else {
-    fill (160);
+    fill (colorSquareMidMid);
     square (squareMidMidX,squareMidMidY,squareMidMidS,squareMidMidR);
   }
 
@@ -179,10 +207,10 @@ fill('black');
     mouseX > squareMidRightX && mouseX < squareMidRightX + squareMidRightS && 
     mouseY > squareMidRightY && mouseY < squareMidRightY + squareMidRightS
   ) {
-    fill(100);
+    fill(hovercolorSquareMidRight);
     square (squareMidRightX,squareMidRightY,squareMidMidS,squareMidRightR);
   } else {
-    fill (160);
+    fill (colorSquareMidRight);
     square (squareMidRightX,squareMidRightY,squareMidRightS,squareMidRightR);
   }
 
@@ -192,10 +220,10 @@ fill('black');
     mouseX > squareBottomLeftX && mouseX < squareBottomLeftX + squareBottomLeftS && 
     mouseY > squareBottomLeftY && mouseY < squareBottomLeftY + squareBottomLeftS
   ) {
-    fill(100);
+    fill(hovercolorSquareBottomLeft);
     square (squareBottomLeftX,squareBottomLeftY,squareBottomLeftS,squareBottomLeftR);
   } else {
-    fill (160);
+    fill (colorSquareBottomLeft);
     square (squareBottomLeftX,squareBottomLeftY,squareBottomLeftS,squareBottomLeftR);
   }
 
@@ -205,10 +233,10 @@ fill('black');
     mouseX > squareBottomMidX && mouseX < squareBottomMidX + squareBottomMidS && 
     mouseY > squareBottomMidY && mouseY < squareBottomMidY + squareBottomMidS
   ) {
-    fill(100);
+    fill(hovercolorSquareBottomMid);
     square (squareBottomMidX,squareBottomMidY,squareBottomMidS,squareBottomMidR);
   } else {
-    fill (160);
+    fill (colorSquareBottomMid);
     square (squareBottomMidX,squareBottomMidY,squareBottomMidS,squareBottomMidR);
   }
 
@@ -218,37 +246,22 @@ fill('black');
     mouseX > squareBottomRightX && mouseX < squareBottomRightX + squareBottomRightS && 
     mouseY > squareBottomRightY && mouseY < squareBottomRightY + squareBottomRightS
   ) {
-    fill(100);
+    fill(hovercolorSquareBottomRight);
     square (squareBottomRightX,squareBottomRightY,squareBottomRightS,squareBottomRightR);
   } else {
-    fill (160);
+    fill (colorSquareBottomRight);
     square (squareBottomRightX,squareBottomRightY,squareBottomRightS,squareBottomRightR);
   }
+      
+        }
+        
+        function mouseClicked(){
+          if (mouseX > squareTopLeftX && mouseX < squareTopLeftX + squareTopLeftS &&
+            mouseY > squareTopLeftY && mouseY < squareTopLeftY + squareTopLeftS
+          ) {
+            console.log("red");
+           colorSquareTopLeft = 'red'
+           hovercolorSquareTopLeft = 'darkred'
+          }
+        }
 
-
-
-}
-
- 
-function mouseClicked() {
-
-if (
-    mouseX > squareTopLeftX && mouseX < squareTopLeftX + squareTopLeftS && 
-    mouseY > squareTopLeftY && mouseY < squareTopLeftY + squareTopLeftS
-  && squareTopLeftC === 0) {
-    if (
-      round === 1
-    ) {
-      squareTopLeftC = 1;
-    }
-    else
-    {
-      squareTopLeftC = 2;
-    }
-    square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
-  } else {
-    fill (160);
-    square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
-  }
-
-}
