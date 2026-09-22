@@ -1,12 +1,14 @@
 //SpelersKleur
 let playerRood = 1;
 let playerBlauw = 2;
+let round = 1;
 
 //Bovenste rij
 let squareTopLeftX = 180;
 let squareTopLeftY = 180;
 let squareTopLeftS = 90;
 let squareTopLeftR = 10;
+let squareTopLeftC = 0;
 
 let squareTopMidX = 280;
 let squareTopMidY = 180;
@@ -51,7 +53,6 @@ let squareBottomRightS = 90;
 let squareBottomRightR = 10;
 
 
-
 function setup() {
   createCanvas(650, 650);
 }
@@ -70,18 +71,23 @@ rect(320,0,330, 1000);
  
 //tekst Boter kaas en eieren
 strokeWeight(5);
-fill(255,255,255,150);
+fill(50,50,50,100);
 rect(130,50,400,80,100,);
- fill('black');
+ fill(255);
   textStyle(BOLDITALIC);
    text("Boter, Kaas en Eieren", 170, 100,);
 
-//Start Knop + tekst
-fill(0,0,0, 100);
- rect(210,530,200,80,40,);
-fill(255);
-textStyle(BOLD);
-text ('Start', 280, 580);
+// //Start Knop + tekst
+// fill(0,0,0, 100);
+//  rect(210,530,200,80,40,);
+// fill(255);
+// textStyle(BOLD);
+// text ('Start', 280, 580);
+// if (mouseIsPressed === true &&  mouseX > 210 && mouseX < 210 + 200 - 10 && 
+//     mouseY > 530 && mouseY < 530 + 80 - 20) {
+  
+// }
+
 
 //rand boter, kaas en eieren
 strokeWeight(0);
@@ -91,17 +97,28 @@ fill('black');
   
   //3x3 knoppen hover
   //Top Left
+
   
   if (
     mouseX > squareTopLeftX && mouseX < squareTopLeftX + squareTopLeftS && 
     mouseY > squareTopLeftY && mouseY < squareTopLeftY + squareTopLeftS
+  ) { if (
+    squareTopLeftC === 0
   ) {
     fill(100);
+    square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
+  } else if (squareTopLeftC == 1) {
+    fill (255, 0, 0);
+    square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
+  } else if (squareTopLeftC == 2) {
+    fill (0, 0, 255);
     square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
   } else {
     fill (160);
     square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
   }
+  }
+
 
   //Top Middle
    if (
@@ -115,6 +132,7 @@ fill('black');
     square (squareTopMidX,squareTopMidY,squareTopMidS,squareTopMidR);
   }
 
+
   //Top Right
   if (
     mouseX > squareTopRightX && mouseX < squareTopRightX + squareTopRightS && 
@@ -126,6 +144,7 @@ fill('black');
     fill (160);
     square (squareTopRightX,squareTopRightY,squareTopRightS,squareTopRightR);
   }
+
   
 //Middle Left
 
@@ -140,6 +159,7 @@ fill('black');
     square (squareMidLeftX,squareMidLeftY,squareMidLeftS,squareMidLeftR);
   }
   
+
 //Middle Mid
 
  if (
@@ -153,6 +173,7 @@ fill('black');
     square (squareMidMidX,squareMidMidY,squareMidMidS,squareMidMidR);
   }
 
+
   //Middle Right
   if (
     mouseX > squareMidRightX && mouseX < squareMidRightX + squareMidRightS && 
@@ -164,6 +185,7 @@ fill('black');
     fill (160);
     square (squareMidRightX,squareMidRightY,squareMidRightS,squareMidRightR);
   }
+
 
   //Bottom left
   if (
@@ -177,7 +199,8 @@ fill('black');
     square (squareBottomLeftX,squareBottomLeftY,squareBottomLeftS,squareBottomLeftR);
   }
 
-  //Bottom right
+
+  //Bottom middle
   if (
     mouseX > squareBottomMidX && mouseX < squareBottomMidX + squareBottomMidS && 
     mouseY > squareBottomMidY && mouseY < squareBottomMidY + squareBottomMidS
@@ -189,6 +212,8 @@ fill('black');
     square (squareBottomMidX,squareBottomMidY,squareBottomMidS,squareBottomMidR);
   }
 
+
+  //Bottom right
    if (
     mouseX > squareBottomRightX && mouseX < squareBottomRightX + squareBottomRightS && 
     mouseY > squareBottomRightY && mouseY < squareBottomRightY + squareBottomRightS
@@ -201,5 +226,29 @@ fill('black');
   }
 
 
-  }
+
+}
+
  
+function mouseClicked() {
+
+if (
+    mouseX > squareTopLeftX && mouseX < squareTopLeftX + squareTopLeftS && 
+    mouseY > squareTopLeftY && mouseY < squareTopLeftY + squareTopLeftS
+  && squareTopLeftC === 0) {
+    if (
+      round === 1
+    ) {
+      squareTopLeftC = 1;
+    }
+    else
+    {
+      squareTopLeftC = 2;
+    }
+    square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
+  } else {
+    fill (160);
+    square (squareTopLeftX,squareTopLeftY,squareTopLeftS,squareTopLeftR);
+  }
+
+}
