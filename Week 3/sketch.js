@@ -1,8 +1,13 @@
-//startknop en spelstatus
+//startknop en status
 let spelGestart = false;
-let winnaar = 0; // 0 = geen, 1 = Rood wint, 2 = Blauw wint, 3 = Gelijkspel
+//0 = geen, 1 = Rood wint, 2 = Blauw wint, 3 = Gelijkspel
+let winnaar = 0; 
 
-//status van de vakjes (0 = leeg, 1 = rood, 2 = blauw)
+
+let beurtrood = 1;
+let beurtblauw = 2;
+
+//Status van de vakjes (0 = leeg, 1 = rood, 2 = blauw)
 let stateTopLeft = 0, stateTopMid = 0, stateTopRight = 0;
 let stateMidLeft = 0, stateMidMid = 0, stateMidRight = 0;
 let stateBottomLeft = 0, stateBottomMid = 0, stateBottomRight = 0;
@@ -89,27 +94,36 @@ let squareBottomRightS = 90;
 let squareBottomRightR = 10;
 
 
-// let player = round(random);
-let player = 1
-
+//let player = round(random);
+let player = 1;
 
 function setup() {
   createCanvas(650, 650);
 }
 
 function draw() {
-  background(220);
+if (spelGestart === true) {
+  if (player === 1) {
+    background('darkred')
+    fill('white');
+    textFont('Courier New');
+    text('Rood aan de beurt', 170, 100);
+  } else if (player === 2) {
+    background('darkblue');
+    fill('white');
+    textFont('Courier New');
+    text('Blauw aan de beurt', 170, 100)
+  } else {
+    background(220);
+  }
+}
+
   fill('white');
   textSize(32);
   strokeWeight(0);
 
-  //rode en blauwe gedeeltes
-  fill('red');
-  rect(0, 0, 330, 1000);
-  fill('blue');
-  rect(320, 0, 330, 1000);
 
-  //tekst Boter kaas en eieren
+  //Tekst Boter, kaas en eieren
   if (spelGestart == false) {
     strokeWeight(5);
     fill(50, 50, 50, 100);
@@ -118,7 +132,7 @@ function draw() {
     textStyle(BOLDITALIC);
     text("Boter, Kaas en Eieren", 170, 100);
 
-    // Start Knop
+    //Start Knop
     strokeWeight(3);
     fill('green');
     rect(225, 550, 200, 60, 20); // de knop zelf
@@ -128,15 +142,47 @@ function draw() {
     text("START", 280, 590); // tekst in de knop
   }
 
-  //rand boter, kaas en eieren
+  //Winnaar en restart knop
+  if (winnaar > 0) {
+    strokeWeight(5);
+    fill(50, 50, 50, 255);
+    rect(100, 50, 450, 80, 20);
+    fill(255);
+    textSize(28);
+    textStyle(BOLD);
+
+    if (winnaar == 1) {
+      background('darkred');
+      text("heeft gewonnen!", 250, 100);
+      fill('red');
+      text("Rood", 170, 100);
+    } else if (winnaar == 2) {
+      background('darkblue');
+      text("heeft gewonnen!", 260, 100);
+        fill('blue');
+        text("Blauw", 160, 100);
+    } else if (winnaar == 3) {
+      background(150);
+      text("Gelijkspel!", 240, 100);
+    }
+    
+
+    // Restart Knop
+    strokeWeight(3);
+    fill('orange');
+    rect(215, 550, 200, 60, 20);
+    fill('white');
+    strokeWeight(0);
+    textSize(26);
+    text("Restart", 265, 590);
+  }
+
+  //Rand boter, kaas en eieren
   strokeWeight(0);
   fill('black');
   square(160, 160, 330, 20);
 
-
-  //3x3 knoppen hover
-  //Top Left
-
+  //Bovenste Links positie
   if (
     mouseX > squareTopLeftX && mouseX < squareTopLeftX + squareTopLeftS &&
     mouseY > squareTopLeftY && mouseY < squareTopLeftY + squareTopLeftS
@@ -149,7 +195,7 @@ function draw() {
   }
 
 
-  //Top Middle
+  //Bovenste Middel positie
   if (
     mouseX > squareTopMidX && mouseX < squareTopMidX + squareTopMidS &&
     mouseY > squareTopMidY && mouseY < squareTopMidY + squareTopMidS
@@ -162,7 +208,7 @@ function draw() {
   }
 
 
-  //Top Right
+  //Bovenste Rechts positie
   if (
     mouseX > squareTopRightX && mouseX < squareTopRightX + squareTopRightS &&
     mouseY > squareTopRightY && mouseY < squareTopRightY + squareTopRightS
@@ -175,8 +221,7 @@ function draw() {
   }
 
 
-  //Middle Left
-
+  //Middelste Links positie
   if (
     mouseX > squareMidLeftX && mouseX < squareMidLeftX + squareMidLeftS &&
     mouseY > squareMidLeftY && mouseY < squareMidLeftY + squareMidLeftS
@@ -189,8 +234,7 @@ function draw() {
   }
 
 
-  //Middle Mid
-
+  //Middelste Middel positie
   if (
     mouseX > squareMidMidX && mouseX < squareMidMidX + squareMidMidS &&
     mouseY > squareMidMidY && mouseY < squareMidMidY + squareMidMidS
@@ -203,7 +247,7 @@ function draw() {
   }
 
 
-  //Middle Right
+  //Middelste Rechts positie
   if (
     mouseX > squareMidRightX && mouseX < squareMidRightX + squareMidRightS &&
     mouseY > squareMidRightY && mouseY < squareMidRightY + squareMidRightS
@@ -216,7 +260,7 @@ function draw() {
   }
 
 
-  //Bottom Left
+  //Onderste Links positie
   if (
     mouseX > squareBottomLeftX && mouseX < squareBottomLeftX + squareBottomLeftS &&
     mouseY > squareBottomLeftY && mouseY < squareBottomLeftY + squareBottomLeftS
@@ -229,7 +273,7 @@ function draw() {
   }
 
 
-  //Bottom Middle
+  //Onderste Middel positie
   if (
     mouseX > squareBottomMidX && mouseX < squareBottomMidX + squareBottomMidS &&
     mouseY > squareBottomMidY && mouseY < squareBottomMidY + squareBottomMidS
@@ -242,7 +286,7 @@ function draw() {
   }
 
 
-  //Bottom Right
+  //Onderste Rechts positie
   if (
     mouseX > squareBottomRightX && mouseX < squareBottomRightX + squareBottomRightS &&
     mouseY > squareBottomRightY && mouseY < squareBottomRightY + squareBottomRightS
@@ -254,35 +298,9 @@ function draw() {
     square(squareBottomRightX, squareBottomRightY, squareBottomRightS, squareBottomRightR);
   }
 
-  //winnaar en restart knop
-  if (winnaar > 0) {
-    strokeWeight(5);
-    fill(50, 50, 50, 200);
-    rect(100, 50, 450, 80, 20);
-    fill(255);
-    textSize(28);
-    textStyle(BOLD);
-
-    if (winnaar == 1) {
-      text("Rood heeft gewonnen!", 170, 100);
-    } else if (winnaar == 2) {
-      text("Blauw heeft gewonnen!", 160, 100);
-    } else if (winnaar == 3) {
-      text("Gelijkspel!", 250, 100);
-    }
-
-    // Restart Knop
-    strokeWeight(3);
-    fill('orange');
-    rect(225, 550, 200, 60, 20);
-    fill('white');
-    strokeWeight(0);
-    textSize(26);
-    text("Restart", 265, 590);
-  }
 }
 
-
+//Als rood heeft gespeeld, laat blauw dan spelen
 function changeTurn()
 {
     checkWinnaar();
@@ -292,11 +310,10 @@ function changeTurn()
     }
 }
 
-
 function checkWinnaar() {
-  //alle 8 winnende plekken
-  
-  // Rood wint (player 1)
+
+  //Alle 8 winnende plekken
+  //Rood wint (player 1)
   if (
     (stateTopLeft == 1 && stateTopMid == 1 && stateTopRight == 1) ||
     (stateMidLeft == 1 && stateMidMid == 1 && stateMidRight == 1) ||
@@ -310,7 +327,7 @@ function checkWinnaar() {
     winnaar = 1;
   }
   
-  // Blauw wint (player 2)
+  //Blauw wint (player 2)
   else if (
     (stateTopLeft == 2 && stateTopMid == 2 && stateTopRight == 2) ||
     (stateMidLeft == 2 && stateMidMid == 2 && stateMidRight == 2) ||
@@ -324,7 +341,7 @@ function checkWinnaar() {
     winnaar = 2;
   }
   
-  // Gelijkspel
+  //Gelijkspel
   else if (
     stateTopLeft != 0 && stateTopMid != 0 && stateTopRight != 0 &&
     stateMidLeft != 0 && stateMidMid != 0 && stateMidRight != 0 &&
@@ -335,8 +352,10 @@ function checkWinnaar() {
 }
 
 
+
+
 function restartSpel() {
-  //terugzetten naar beginstand
+  //Terugzetten naar begin
   player = 1;
   winnaar = 0;
 
@@ -360,24 +379,24 @@ function restartSpel() {
 
 function mouseClicked() {
 
-  // Kijken of er op start wordt geklikt
+  //Kijk of er op start wordt geklikt
   if (spelGestart == false) {
     if (mouseX > 225 && mouseX < 425 && mouseY > 550 && mouseY < 610) {
       spelGestart = true;
     }
   }
 
-  // Kijken of er op restart wordt geklikt
+  //Kijk of er op restart wordt geklikt
   if (winnaar > 0) {
     if (mouseX > 225 && mouseX < 425 && mouseY > 550 && mouseY < 610) {
       restartSpel();
     }
   }
 
-  // als het spel is gestart en er nog geen winnaar mag je vakjes klikken
+  // Als het spel is gestart en er geen winnaar is mag je vakjes klikken
   if (spelGestart == true && winnaar == 0) {
 
-    // Top left kleur click
+    //Bovenste Links kleur click
     if (mouseX > squareTopLeftX && mouseX < squareTopLeftX + squareTopLeftS &&
       mouseY > squareTopLeftY && mouseY < squareTopLeftY + squareTopLeftS
     ) {
@@ -390,7 +409,7 @@ function mouseClicked() {
         changeTurn();
       }
     }
-    // Top mid kleur click
+    //Bovenste Rechts kleur click
     if (mouseX > squareTopMidX && mouseX < squareTopMidX + squareTopMidS &&
       mouseY > squareTopMidY && mouseY < squareTopMidY + squareTopMidS
     ) {
@@ -404,7 +423,7 @@ function mouseClicked() {
       }
     }
 
-    //Top Right kleur click
+    //Bovenste Rechts kleur click
     if (mouseX > squareTopRightX && mouseX < squareTopRightX + squareTopRightS &&
       mouseY > squareTopRightY && mouseY < squareTopRightY + squareTopRightS
     ) {
@@ -418,7 +437,7 @@ function mouseClicked() {
       }
     }
 
-    //Mid left kleur click
+    //Middelste Links kleur click
     if (mouseX > squareMidLeftX && mouseX < squareMidLeftX + squareMidLeftS &&
       mouseY > squareMidLeftY && mouseY < squareMidLeftY + squareMidLeftS
     ) {
@@ -431,7 +450,7 @@ function mouseClicked() {
         changeTurn();
       }
     }
-    // Mid mid kleur click
+    //Middelste Middel kleur click
     if (mouseX > squareMidMidX && mouseX < squareMidMidX + squareMidMidS &&
       mouseY > squareMidMidY && mouseY < squareMidMidY + squareMidMidS
     ) {
@@ -445,7 +464,7 @@ function mouseClicked() {
       }
     }
 
-    //Mid Right kleur click
+    //Middelste Rechts kleur click
     if (mouseX > squareMidRightX && mouseX < squareMidRightX + squareMidRightS &&
       mouseY > squareMidRightY && mouseY < squareMidRightY + squareMidRightS
     ) {
@@ -459,7 +478,7 @@ function mouseClicked() {
       }
     }
 
-    //Bottom left kleur click
+    //Onderste Links kleur click
     if (mouseX > squareBottomLeftX && mouseX < squareBottomLeftX + squareBottomLeftS &&
       mouseY > squareBottomLeftY && mouseY < squareBottomLeftY + squareBottomLeftS
     ) {
@@ -472,7 +491,7 @@ function mouseClicked() {
         changeTurn();
       }
     }
-    //Bottom mid kleur click
+    //Onderste Middel kleur click
     if (mouseX > squareBottomMidX && mouseX < squareBottomMidX + squareBottomMidS &&
       mouseY > squareBottomMidY && mouseY < squareBottomMidY + squareBottomMidS
     ) {
@@ -486,7 +505,7 @@ function mouseClicked() {
       }
     }
 
-    //Bottom Right kleur click
+    //Onderste Rechts kleur click
     if (mouseX > squareBottomRightX && mouseX < squareBottomRightX + squareBottomRightS &&
       mouseY > squareBottomRightY && mouseY < squareBottomRightY + squareBottomRightS
     ) {
@@ -501,5 +520,6 @@ function mouseClicked() {
     }
 
   }
+  
 
 }
