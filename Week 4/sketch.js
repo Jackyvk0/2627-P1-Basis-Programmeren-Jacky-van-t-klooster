@@ -146,11 +146,18 @@ function draw() {
     } else{
       loop();
     }
-
-// Klik op 'g' om als gif van 5 seconden op te slaan
-
-//  if (keyIsPressed(71)) {
-//    saveGif('mySketch', 5);
-//   }
+    
+    
+//Als spatieingedrukt is, maak het sneller
+    if (keyIsDown(32)) {
+      frameRate(60);
+    } else {
+      frameRate(20);
+    }
+    // Klik op 'g' om als gif van 5 seconden op te slaan
+    
+    //  if (keyIsPressed(71)) {
+    //    saveGif('mySketch', 5);
+    //   }
 
 }
