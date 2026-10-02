@@ -134,19 +134,7 @@ function draw() {
 //Klik op de 's' toets om een screenshot te maken van het canvas
   if (keyIsDown(83)) {
     saveCanvas('GeneratieveKunst', 'png');
-  }
-
-  //Als capslock ingedrukt is,stop de sketch en laat een bericht zien
-    if (keyIsDown(20)) {
-      noLoop();
-      fill(0);
-      textSize(32);
-      textAlign(CENTER, CENTER);
-      text('Capslock is actief. De Sketch is gepauseerd.', width / 2, height / 2);
-    } else{
-      loop();
-    }
-    
+  }   
     
 //Als spatieingedrukt is, maak het sneller
     if (keyIsDown(32)) {
@@ -154,10 +142,6 @@ function draw() {
     } else {
       frameRate(20);
     }
-    // Klik op 'g' om als gif van 5 seconden op te slaan
-    
-    //  if (keyIsPressed(71)) {
-    //    saveGif('mySketch', 5);
-    //   }
 
 }
+
