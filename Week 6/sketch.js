@@ -40,25 +40,6 @@ function draw() {
   fill('grey');
   rect(0,0,800,150);
 
-  //Dag + tijd teller en als tijd 23:59 is, tijd = 00:00 en dag +1
-  fill(250,0,0,40)
-  strokeWeight(5)
-  rect(20,65,80,30,2);
-
-  strokeWeight(1);
-  fill('white')
-  textFont('Arial');
-  textStyle(NORMAL);
-  text('Dag ' + dag, 20, 40)
-  text(round(tijd), 30, 90)
-
-  tijd = tijd + 0.2
-  
-  if (tijd > 2399) {
-    tijd = 0
-    dag++
-  }
-
   //Vakken met honger,energie, geluk en gezondheid
   fill('lightblue')
   square(180,25,100,5);
@@ -68,47 +49,74 @@ function draw() {
 
         fill('yellow')
         textSize(21);
-        text('honger' + round(honger),180,80);
+        text('honger ' + round(honger),180,80);
 
         textSize(20);
-        text('energie' + round(energie),300,80);
+        text('energie ' + round(energie),300,80);
 
         textSize(24);
-        text('geluk' + round(geluk),420,80);
+        text('geluk ' + round(geluk),420,80);
 
         textSize(20);
-        text('gezondheid' + round(gezondheid),540,80);
+        text('gezondheid ' + round(gezondheid),540,80);
 
 
 //Honger die vermindert over tijd
-  honger = honger - 0.0050
 
-  if (honger <= 0) {
-    honger = 0
-  }
+honger = honger - 0.0050
+
+if (honger <= 0) {
+  honger = 0
+}
 
   //Energie die vermindert over tijd
   energie = energie - 0.00214
-
+  
   if (energie <= 0) {
     energie = 0
   }
-
+  
+  
   //Geluk die vermindert over tijd
   geluk = geluk - 0.0040
-
+  
   if (geluk <= 0) {
     geluk = 0
   }
-
+  
   //Gezondheid die vermindert over tijd
   gezondheid = gezondheid - 0.0020
-
+  
   if (gezondheid <= 0) {
     gezondheid = 0
   }
 
-
+  //Als een van de waardes 0 is dan game over
+  if (honger == 0 || energie == 0 || geluk == 0 || gezondheid == 0) {
+  textSize(100);
+  fill('red');
+  strokeWeight(4);
+  text('GAMEOVER!', 100, 400);
+  
 }
+
+//Dag + tijd teller
+let nu = new Date();
+
+
+  fill(250,0,0,40)
+  strokeWeight(5)
+  rect(20,65,110,30,2);
+
+ textSize(25);
+ fill('white');
+ text(nu.getHours(), 25, 89)
+  text(nu.getMinutes(), 60, 89);
+    text(nu.getSeconds(), 95, 89);
+
+ text('October ' + nu.getDate(), 20, 40)
+ 
+}
+
 
 
