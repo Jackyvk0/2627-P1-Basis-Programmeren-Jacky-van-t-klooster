@@ -35,6 +35,7 @@ function draw() {
   textSize(25);
   textStyle(BOLD);
   text('Woonkamer',330, 210)
+  strokeWeight(2);
 
   //Boven balk
   fill('grey');
@@ -98,23 +99,27 @@ if (honger <= 0) {
   strokeWeight(4);
   text('GAMEOVER!', 100, 400);
   
+
 }
 
 //Dag + tijd teller
 let nu = new Date();
+let tijdDate = nf(nu.getDate(), 2);
+let tijdUren = nf(nu.getHours(), 2);
+let tijdMinuten = nf(nu.getMinutes(), 2);
+let tijdSeconden = nf(nu.getSeconds(), 2);
 
-
-  fill(250,0,0,40)
-  strokeWeight(5)
-  rect(20,65,110,30,2);
+fill(250,0,0,40)
+strokeWeight(5)
+rect(20,65,110,30,2);
 
  textSize(25);
  fill('white');
- text(nu.getHours(), 25, 89)
-  text(nu.getMinutes(), 60, 89);
-    text(nu.getSeconds(), 95, 89);
+ text(tijdUren, 25, 89)
+  text(tijdMinuten, 60, 89);
+    text(tijdSeconden, 95, 89);
 
- text('October ' + nu.getDate(), 20, 40)
+ text('October ' + tijdDate, 20, 40)
  
 }
 
