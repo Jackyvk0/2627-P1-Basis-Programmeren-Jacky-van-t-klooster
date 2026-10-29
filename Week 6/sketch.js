@@ -19,6 +19,7 @@ let wassen = false;
 let faceNormal, faceMeh, faceSad, faceSick, faceHungry, faceTired, faceDead;
 let hongerIcoon, energieIcoon, gelukIcoon, gezondheidIcoon;
 
+
 function setup() {
   createCanvas(800, 800);
   frameRate(30);
@@ -43,12 +44,21 @@ function setup() {
   //Actieknoppen per kamer
   btnSpelen = createButton('Tv kijken').position(53, 422).size(130, 80).style('font-weight', 'bold').mousePressed(spelen);
   btnEten = createButton('Eten').position(678, 358).size(100, 220).style('font-weight', 'bold').mousePressed(eten);
-  btnSlapen = createButton('Slapen').position(325, 720).size(150, 60).style('font-weight', 'bold').mousePressed(slapen);
-  btnSchoon = createButton('Wassen').position(325, 720).size(150, 60).style('font-weight', 'bold').mousePressed(schoonmaken);
+  btnSlapen = createButton('Slapen').position(595, 570).size(150, 60).style('font-weight', 'bold').mousePressed(slapen);
+  btnSchoon = createButton('Wassen').position(39, 517).size(98, 60).style('font-weight', 'bold').mousePressed(schoonmaken);
 
   //Herstart knop
   btnHerstart = createButton('Opnieuw spelen').position(300, 650).size(200, 60).style('font-weight', 'bold').mousePressed(resetGame);
   btnHerstart.hide();
+
+  let honger = getItem("EtenW");
+  let energie = getItem("EnergieW");
+  let geluk = getItem("GelukW");
+  let gezondheid = getItem("GezondheidW");
+    print("De opgeslagen honger is:", honger);
+      print("De opgeslagen energie is:", energie);
+        print("De opgeslagen geluk is:", geluk);
+          print("De opgeslagen gezondheid is:", gezondheid);
 }
 
 function draw() {
@@ -336,3 +346,10 @@ function resetGame() {
   btnRight.show();
   btnHerstart.hide();
 }
+
+  function saveStats(){
+   storeItem("gelukW", geluk);
+   storeItem("hongerW", honger);
+   storeItem("energieW", energie);
+   storeItem("gezondheidW", gezondheid);
+  }
