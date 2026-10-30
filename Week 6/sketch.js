@@ -10,13 +10,13 @@ let gezondheid = 100;
 let currentRoom = 0;
 let etenTeller = 0;
 
-let btnLeft, btnRight, btnHerstart;
+let btnLeft, btnRight, btnHerstart, btnHelp;
 let btnSpelen, btnEten, btnSlapen, btnSchoon;
 
 let sleeping = false;
 let wassen = false;
 
-let faceNormal, faceMeh, faceSad, faceSick, faceHungry, faceTired, faceDead;
+let faceNormal, faceMeh, faceSad, faceSick, faceHungry, faceTired, faceDead, faceSleeping;
 let hongerIcoon, energieIcoon, gelukIcoon, gezondheidIcoon;
 
 
@@ -24,13 +24,25 @@ function setup() {
   createCanvas(800, 800);
   frameRate(30);
 
+  //maak donkeder wanneer je slaapt
+  createElement('style', `
+    .action-btn {
+      opacity: 0.15;
+      transition: opacity 0.3s ease;
+    }
+    .action-btn:hover {
+      opacity: 1;
+    }
+  `);
+
   faceNormal = loadImage("assets/face normal.png");
   faceMeh = loadImage("assets/face meh.png");
   faceSad = loadImage("assets/face sad.png");
   faceSick = loadImage("assets/face sick.png");
   faceHungry = loadImage("assets/face hungry.png");
   faceTired = loadImage("assets/face tired.png");
-  faceDead = loadImage("assets/face dead.png");
+  faceDead = loadImage("assets/gameover.gif"); 
+  faceSleeping = loadImage("assets/face sleeping.png");
 
   hongerIcoon = loadImage("assets/hongericoon.png");
   energieIcoon = loadImage("assets/energieicoon.png");
@@ -42,23 +54,28 @@ function setup() {
   btnRight = createButton('--->').position(710, 180).size(80, 80).style('font-weight', 'bold').mousePressed(volgendeKamer);
   
   //Actieknoppen per kamer
-  btnSpelen = createButton('Tv kijken').position(53, 422).size(130, 80).style('font-weight', 'bold').mousePressed(spelen);
-  btnEten = createButton('Eten').position(678, 358).size(100, 220).style('font-weight', 'bold').mousePressed(eten);
-  btnSlapen = createButton('Slapen').position(595, 570).size(150, 60).style('font-weight', 'bold').mousePressed(slapen);
-  btnSchoon = createButton('Wassen').position(39, 517).size(98, 60).style('font-weight', 'bold').mousePressed(schoonmaken);
+  btnSpelen = createButton('Tv kijken').position(53, 422).size(130, 80).style('font-weight', 'bold').class('action-btn').mousePressed(spelen);
+  btnEten = createButton('Eten').position(678, 358).size(100, 220).style('font-weight', 'bold').class('action-btn').mousePressed(eten);
+  btnSlapen = createButton('Slapen').position(595, 570).size(150, 60).style('font-weight', 'bold').class('action-btn').mousePressed(slapen);
+  btnSchoon = createButton('Wassen').position(39, 517).size(98, 60).style('font-weight', 'bold').class('action-btn').mousePressed(schoonmaken);
+
+  //Help knop
+  btnHelp = createButton('?').position(680, 35).size(80, 80).style('font-weight', 'bold').style('font-size', '30px').mousePressed(toonHelp);
 
   //Herstart knop
   btnHerstart = createButton('Opnieuw spelen').position(300, 650).size(200, 60).style('font-weight', 'bold').mousePressed(resetGame);
   btnHerstart.hide();
 
-  let honger = getItem("EtenW");
-  let energie = getItem("EnergieW");
-  let geluk = getItem("GelukW");
-  let gezondheid = getItem("GezondheidW");
-    print("De opgeslagen honger is:", honger);
-      print("De opgeslagen energie is:", energie);
-        print("De opgeslagen geluk is:", geluk);
-          print("De opgeslagen gezondheid is:", gezondheid);
+  //Local storage
+  let savedHonger = getItem("honger");
+  let savedEnergie = getItem("energie");
+  let savedGeluk = getItem("geluk");
+  let savedGezondheid = getItem("gezondheid");
+
+  if (savedHonger !== null && savedHonger !== undefined) { honger = savedHonger; }
+  if (savedEnergie !== null && savedEnergie !== undefined) { energie = savedEnergie; }
+  if (savedGeluk !== null && savedGeluk !== undefined) { geluk = savedGeluk; }
+  if (savedGezondheid !== null && savedGezondheid !== undefined) { gezondheid = savedGezondheid; }
 }
 
 function draw() {
@@ -66,12 +83,13 @@ function draw() {
     background(200);
     btnLeft.hide();
     btnRight.hide();
+    btnHelp.hide();
     verbergActieKnoppen();
     btnHerstart.show();
-    
+
     if (faceDead) {
-      image(faceDead, 200, 250); 
-      }
+      image(faceDead, 225, 210, 350, 350); 
+    }
 
     textSize(100);
     fill('red');
@@ -123,8 +141,8 @@ function draw() {
   tekenStatSquare(420, 25, geluk, gelukIcoon);
   tekenStatSquare(540, 25, gezondheid, gezondheidIcoon);
 
- 
   toonJuisteActieKnop();
+  btnHelp.show(); 
 
   //Tijd & Datum
   let nu = new Date();
@@ -143,21 +161,34 @@ function draw() {
   //Huisdier/tamagotchi
   let laagsteStat = min(honger, energie, gezondheid, geluk);
 
-  if (laagsteStat < 50) {
+  if (sleeping) {
+    if (faceSleeping) {
+      image(faceSleeping, 275, 260, 250, 250);
+    }
+  } else if (laagsteStat < 50) {
     if (laagsteStat === honger && faceHungry) {
-      image(faceHungry, 200, 300);
+      image(faceHungry, 275, 260, 250, 250);
     } else if (laagsteStat === energie && faceTired) {
-      image(faceTired, 200, 300);
+      image(faceTired, 275, 260, 250, 250);
     } else if (laagsteStat === gezondheid && faceSick) {
-      image(faceSick, 200, 300);
+      image(faceSick, 275, 260, 250, 250);
     } else if (laagsteStat === geluk && faceSad) {
-      image(faceSad, 200, 300);
+      image(faceSad, 275, 260, 250, 250);
     }
   } else if ((honger > 50 || energie > 50 || geluk > 50 || gezondheid > 50) && faceNormal) {
-    image(faceNormal, 200, 300);
+    image(faceNormal, 275, 260, 250, 250);
   } else if (faceMeh) {
-    image(faceMeh, 200, 300);
+    image(faceMeh, 275, 260, 250, 250);
   }
+
+  //Scherm donkerder maken als je slaapt
+  if (sleeping) {
+    noStroke();
+    fill(0, 0, 0, 150);
+    rect(0, 0, width, height);
+  }
+
+  saveStats();
 }
 
 //Statistiek balken
@@ -227,7 +258,6 @@ function tekenKamerObject() {
     rect(740, 525, 40, 65, 3);  
     rect(740, 595, 40, 60, 3);  
   } 
-
   else if (currentRoom === 3) {
     //Badkamer Douche
     fill('white');
@@ -324,8 +354,16 @@ function schoonmaken() {
 
   if (wassen == true) {
     sleeping = false;
-    btnSlapen.html('Slapen');  
+    btnSlapen.html('Slapen');   
   }
+}
+
+function toonHelp() {
+  alert("WELKOM!\n\n" +
+        "- Beweeg met de links en rechts knoppen om te gaan naarverschillende kamers.\n" +
+        "- Hover met je muis over de actieknoppen om ze te zien.\n" +
+        "- Houd de statistieken (Honger, Energie, Geluk, Gezondheid) goed in de gaten in de bovenbalk!\n" +
+        "- Als er één balkje op 0 komt, ben je Game Over.");
 }
 
 function resetGame() {
@@ -347,9 +385,9 @@ function resetGame() {
   btnHerstart.hide();
 }
 
-  function saveStats(){
-   storeItem("gelukW", geluk);
-   storeItem("hongerW", honger);
-   storeItem("energieW", energie);
-   storeItem("gezondheidW", gezondheid);
-  }
+function saveStats(){
+  storeItem("geluk", geluk);
+  storeItem("honger", honger);
+  storeItem("energie", energie);
+  storeItem("gezondheid", gezondheid);
+}
